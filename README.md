@@ -1,2 +1,2 @@
-# terraform-azure-keyvault
+# terraform-azurerm-key-vault
 Argo Azure Key Vault Module
