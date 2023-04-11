@@ -39,6 +39,13 @@ resource "azurerm_resource_group" "main" {
   tags = var.tags
 }
 
+resource "azurerm_management_lock" "main" {
+  name       = "resource-group-level"
+  scope      = azurerm_resource_group.main.id
+  lock_level = "ReadOnly"
+  notes      = "This Resource Group is Read-Only"
+}
+
 resource "azurerm_key_vault" "main" {
   name                = format("%s-kv", lower(var.name))
   location            = azurerm_resource_group.main.location
